@@ -9,7 +9,7 @@ jobs:
     steps:
       - run:
           command: echo "build debug" > debug.txt
-          shell: bash
+          shell: /bin/bash
       - persist_to_workspace:
           root: .
           paths:
@@ -21,7 +21,7 @@ jobs:
           at: .
       - run:
           command: echo "$PWD"; test "$(cat debug.txt)" = "build debug"
-          shell: bash
+          shell: /bin/bash
 workflows:
   build_debug_and_test:
     jobs:
