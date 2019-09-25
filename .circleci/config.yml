@@ -1,9 +1,11 @@
 version: 2.1
 jobs:
-  - build_debug:
-      run: echo "build debug" > debug.txt
-  - test:
-      run: test $(cat debug.txt) = "build debug"
+  build_debug:
+    steps:
+      - run: echo "build debug" > debug.txt
+  test:
+    steps:
+      - run: test $(cat debug.txt) = "build debug"
 workflows:
   build_debug_and_test:
     jobs:
