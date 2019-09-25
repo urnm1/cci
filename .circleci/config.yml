@@ -7,4 +7,5 @@ jobs:
 workflows:
   build_debug_and_test:
     jobs:
-      
+      - build_debug
+      - test
