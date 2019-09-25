@@ -1,9 +1,15 @@
 version: 2.1
+executors:
+  docker_alpine:
+    docker:
+      - image: alpine:3.10.2
 jobs:
   build_debug:
+    executor: docker_alpine
     steps:
       - run: echo "build debug" > debug.txt
   test:
+    executor: docker_alpine
     steps:
       - run: test $(cat debug.txt) = "build debug"
 workflows:
