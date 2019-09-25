@@ -2,7 +2,7 @@ version: 2.1
 executors:
   my_executor:
     docker:
-      - image: debian:bullseye-20190910
+      - image: ubuntu:eoan-20190916
 jobs:
   build_debug:
     executor: my_executor
