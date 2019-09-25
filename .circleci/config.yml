@@ -1,11 +1,11 @@
 version: 2.1
 executors:
-  docker_alpine:
+  my_executor:
     docker:
-      - image: alpine:3.10.2
+      - image: debian:bullseye-20190910
 jobs:
   build_debug:
-    executor: docker_alpine
+    executor: my_executor
     steps:
       - run:
           command: echo "build debug" > debug.txt
@@ -14,7 +14,7 @@ jobs:
           paths:
             - "*"
   test:
-    executor: docker_alpine
+    executor: my_executor
     steps:
       - attach_workspace:
           at: .
