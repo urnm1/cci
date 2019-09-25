@@ -7,7 +7,9 @@ jobs:
   build_debug:
     executor: docker_alpine
     steps:
-      - run: echo "build debug" > debug.txt
+      - run:
+          command: echo "build debug" > debug.txt
+          shell: bash
       - persist_to_workspace:
           root: .
           paths:
@@ -17,7 +19,9 @@ jobs:
     steps:
       - attach_workspace:
           at: .
-      - run: echo "$PWD"; test "$(cat debug.txt)" = "build debug"
+      - run:
+          command: echo "$PWD"; test "$(cat debug.txt)" = "build debug"
+          shell: bash
 workflows:
   build_debug_and_test:
     jobs:
