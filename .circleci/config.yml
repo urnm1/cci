@@ -10,8 +10,10 @@ jobs:
       - run: echo "build debug" > debug.txt
   test:
     executor: docker_alpine
+    requires:
+      - build_debug
     steps:
-      - run: test $(cat debug.txt) = "build debug"
+      - run: test "$(cat debug.txt)" = "build debug"
 workflows:
   build_debug_and_test:
     jobs:
