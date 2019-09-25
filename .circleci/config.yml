@@ -10,15 +10,9 @@ jobs:
       - run:
           command: echo "build debug" > debug.txt
           shell: /bin/bash
-      - persist_to_workspace:
-          root: .
-          paths:
-            - "*"
   test:
     executor: my_executor
     steps:
-      - attach_workspace:
-          at: .
       - run:
           command: echo "$PWD"; test "$(cat debug.txt)" = "build debug"
           shell: /bin/bash
