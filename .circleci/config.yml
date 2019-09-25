@@ -1,14 +1,15 @@
 version: 2.1
 executors:
   my_executor:
-    docker:
-      - image: ubuntu:eoan-20190916
+    machine:
+      - image: ubuntu-1604:201903-01
 jobs:
   build_debug:
     executor: my_executor
     steps:
       - run:
           command: echo "build debug" > debug.txt
+          shell: /bin/bash
       - persist_to_workspace:
           root: .
           paths:
@@ -20,6 +21,7 @@ jobs:
           at: .
       - run:
           command: echo "$PWD"; test "$(cat debug.txt)" = "build debug"
+          shell: /bin/bash
 workflows:
   build_debug_and_test:
     jobs:
