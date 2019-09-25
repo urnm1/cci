@@ -13,7 +13,7 @@ jobs:
       - persist_to_workspace:
           root: .
           paths:
-            - *
+            - "*"
   test:
     executor: docker_alpine
     steps:
