@@ -11,7 +11,7 @@ jobs:
   test:
     executor: docker_alpine
     steps:
-      - run: test "$(cat debug.txt)" = "build debug"
+      - run: echo "$PWD"; test "$(cat debug.txt)" = "build debug"
 workflows:
   build_debug_and_test:
     jobs:
