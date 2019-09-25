@@ -1,1 +1,10 @@
-
+version: 2.1
+jobs:
+  build_debug:
+    echo "build debug" > debug.txt
+  test:
+    test $(cat debug.txt) = "build debug"
+workflows:
+  build_debug_and_test:
+    jobs:
+      
