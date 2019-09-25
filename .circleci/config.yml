@@ -1,8 +1,7 @@
 version: 2.1
 executors:
   my_executor:
-    machine:
-      - image: ubuntu-1604:201903-01
+    machine: ubuntu-1604:201903-01
 jobs:
   build_debug:
     executor: my_executor
